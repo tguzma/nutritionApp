@@ -8,10 +8,20 @@
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
+
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+      <ion-title size="large">Food nutrition</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  
+  <ion-item>
+    <ion-label position="floating">Search for food</ion-label>
+    <ion-input [(ngModel)]="searchInput" placeholder="Enter name of food"></ion-input>
+  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let post of posts$ | async; let i = index">
+      <ion-label class="ion-text-wrap" [routerLink]="['/post', post.name]">{{post.name}} contains: {{post.calories}}</ion-label>
+    </ion-item>
+  </ion-list> 
+  <ion-button (click)="setHistory()" expand="block" fill="outline">Search</ion-button>
 </ion-content>
