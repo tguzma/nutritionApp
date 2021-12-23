@@ -20,7 +20,6 @@ export class PostDetailPage implements OnInit {
     const name = this.route.snapshot.paramMap.get("name");
     console.log("This is name log:" +name);
     this.post$ = this.apiService.getPost$(name);
-    console.log("This is post log:" +this.post$);
     this.post$.subscribe(console.log);
   }
 

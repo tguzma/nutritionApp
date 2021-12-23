@@ -6,6 +6,9 @@ import { Post } from '../models/post';
 import { ApiService } from '../services/api.service';
 import { map } from 'rxjs/operators';
 import { zip } from 'rxjs'
+import { isEmpty } from 'rxjs/operators';  
+import { Plugins } from "@capacitor/core";
+import { SplashScreen } from '@capacitor/splash-screen';
 export async function get(key: string): Promise<any> {
   const item = await Storage.get({ key: key });
   return JSON.parse(item.value);
@@ -17,6 +20,10 @@ export async function get(key: string): Promise<any> {
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+
+  componentDidLoad(){
+    SplashScreen.hide();
+  }
 
   posts$: Observable<Post[]>;
   history$: Observable<Post[]>;
@@ -34,6 +41,8 @@ export class Tab1Page {
       return;
     }
     this.posts$ = this.apiService.getPosts$(this.searchInput);
+
+
     const oldHisotoryConst = from(get('history'));
 
     //adds old history to the new one

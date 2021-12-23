@@ -1,15 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <ion-label class="ion-text-wrap">Hello</ion-label>
+  <ion-list>
+    <ion-item *ngFor="let post of post$ | async; let i = index ">
+      <ion-label style="font-size:xx-large" class="ion-text-wrap">{{post.serving_size_g}}g of {{post.name}} contain: 
+        <ion-list >
+          <ion-label style="font-size:large" class="ion-text-wrap">Calories: {{post.calories}}</ion-label>
+          <ion-label style="font-size:large" class="ion-text-wrap">Fat total: {{post.fat_total_g}} g</ion-label>
+          <ion-label style="font-size:large" class="ion-text-wrap">Fat saturated: {{post.fat_saturated_g}} g</ion-label>
+          <ion-label style="font-size:large" class="ion-text-wrap">Protein: {{post.protein_g}} g</ion-label>
+          <ion-label style="font-size:large" class="ion-text-wrap">Sodium: {{post.sodium_mg}} mg</ion-label>
+          <ion-label style="font-size:large" class="ion-text-wrap">Potassium: {{post.potassium_mg}} mg</ion-label>
+          <ion-label style="font-size:large" class="ion-text-wrap">Cholesterol: {{post.cholesterol_mg}} mg</ion-label>
+          <ion-label style="font-size:large" class="ion-text-wrap">Carbohydrates: {{post.carbohydrates_total_g}} g</ion-label>
+          <ion-label style="font-size:large" class="ion-text-wrap">Fiber: {{post.fiber_g}} g</ion-label>
+          <ion-label style="font-size:large" class="ion-text-wrap">Sugar: {{post.sugar_g}} g</ion-label>
+        </ion-list>
+      </ion-label>
+    </ion-item>
+  </ion-list> 
 </ion-content>
-<!-- 
-<ion-content>
-    <ion-label class="ion-text-wrap">{{post$}} contains:</ion-label>
-</ion-content>
-   -->
 
