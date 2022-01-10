@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Post } from '../models/post';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Post } from '../models/post';
 export class ApiService {
   
   apiBase = "https://api.api-ninjas.com/v1/nutrition?query=";
-  headers = new HttpHeaders().set("X-Api-Key", "NTlZYE57KIIBHprhk8zSMQ==xMrhSvBeKmqFVWyf");
+  headers = new HttpHeaders().set("X-Api-Key", environment.apiKey);
 
   constructor(
     private http: HttpClient
